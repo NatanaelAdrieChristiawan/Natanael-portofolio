@@ -15,7 +15,7 @@
         @include mobile{
             padding-top: calc(100vh - 100px);
             font-size: 24px;
-            top: 10px;
+            top: 50px;
         }
 
         @include tablet{
@@ -61,7 +61,7 @@
 
                 @include mobile{
                     width: 100%;
-                    max-height: 300px;
+                    height: 100%;
                 }
 
                 @include tablet{
