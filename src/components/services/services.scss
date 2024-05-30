@@ -6,6 +6,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
+  @include mobile{
+    max-height: 900px;
+  }
 
 
   .textContainer{
@@ -26,6 +30,12 @@
         font-size: 20px;
         color: gray;
         text-align: right;
+
+        @include mobile{
+          font-size: 15px;
+          text-align: right;
+          margin-left: 80px;
+        }
     }
 
     hr{
@@ -35,6 +45,7 @@
 
         @include mobile{
           width: 300px;
+          margin-left: 80px;
         }
     }
   }
@@ -56,7 +67,7 @@
         @include mobile{
           flex-direction: column;
           text-align: center;
-          gap: 20px;
+          gap: 65px;
         }
 
         img{
@@ -68,6 +79,7 @@
             @include mobile{
               width: 200px;
               height: 50px;
+              margin-top: -50px;
             }
         }
 
@@ -90,7 +102,7 @@
             cursor: pointer;
 
             @include mobile{
-              font-size: 16px;
+              font-size: 14px;
               width: 150px;
               height: 50px;
             }
