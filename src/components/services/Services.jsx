@@ -37,7 +37,7 @@ const Services = () => {
     >
       <motion.div className="textContainer" variants={variants}>
         <p>
-          Saya merupakan lulusan SMKN 2 SURAKARTA <br /> Jurusan Rekayasa Perangkat Lunak
+          Saya merupakan lulusan SMKN 2 SURAKARTA <br /> Jurusan Pengembangan Perangkat Lunak dan Gim
         </p>
         <hr />
       </motion.div>
