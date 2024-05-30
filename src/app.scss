@@ -2,7 +2,6 @@ html{
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     overflow-x: hidden;
-    overscroll-behavior-x: hidden;
 }
 
 *{
@@ -28,7 +27,7 @@ section{
 }
 
 @mixin mobile {
-    @media (max-width: 838px) {
+    @media (max-width: 638px) {
         @content;
     }
 }
