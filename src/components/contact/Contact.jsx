@@ -71,16 +71,16 @@ const Contact = () => {
       <motion.div className="textContainer" variants={variants}>
         <motion.h1>Let &apos; s Work Together</motion.h1>
         <motion.div className="item" variants={variants}>
-          <h2>Mail</h2>
-          <span>hello@react.dev</span>
+          <h2>Email</h2>
+          <span>natanaelac04@gmail.com</span>
         </motion.div>
         <motion.div className="item" variants={variants}>
           <h2>Address</h2>
-          <span>Hello street Kartasura</span>
+          <span>Kartasura, Sukoharjo, Jawa Tengah</span>
         </motion.div>
         <motion.div className="item" variants={variants}>
           <h2>Phone</h2>
-          <span>+62 893245254</span>
+          <span>+62 85713199721</span>
         </motion.div>
       </motion.div>
       <div className="formContainer">

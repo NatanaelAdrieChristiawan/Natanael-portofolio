@@ -37,8 +37,7 @@ const Services = () => {
     >
       <motion.div className="textContainer" variants={variants}>
         <p>
-          I focus on helping your brand grow
-          <br /> and move forward
+          Saya merupakan lulusan SMKN 2 SURAKARTA <br /> Jurusan Rekayasa Perangkat Lunak
         </p>
         <hr />
       </motion.div>
@@ -46,14 +45,14 @@ const Services = () => {
         <div className="title">
           <img src="/people.webp" alt="" />
           <h1>
-            <motion.b whileHover={{ color: "orange" }}>Unique</motion.b> Ideas
+            <motion.b whileHover={{ color: "orange" }}>Perjalanan</motion.b> Pendidikan
           </h1>
         </div>
         <div className="title">
           <h1>
-            <motion.b whileHover={{ color: "orange" }}>For Your</motion.b> Business.
+            <motion.b whileHover={{ color: "orange" }}>Menuju Karir</motion.b> Gemilang
           </h1>
-          <button>WHAT I DO?</button>
+          <button>PENGALAMAN SAYA</button>
         </div>
       </motion.div>
       <motion.div className="listContainer" variants={variants}>
@@ -61,53 +60,37 @@ const Services = () => {
           className="box"
           whileHover={{ background: "lightgray", color: "black" }}
         >
-          <h2>Branding</h2>
+          <h2>Diklat Astra-Sinarmas UGM Tingkat Beginner</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
+            Membangun fondasi kuat dalam pengembangan website dan aplikasi Android dengan mempelajari HTML, CSS, JavaScript, dan Android Studio.
           </p>
-          <button>Go</button>
         </motion.div>
         <motion.div
           className="box"
           whileHover={{ background: "lightgray", color: "black" }}
         >
-          <h2>Branding</h2>
+          <h2>Diklat Astra-Sinarmas UGM Tingkat Intermediate</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
+            Meningkatkan kemampuan dengan mempelajari framework Laravel untuk website dan implementasi API pada aplikasi Android. 
           </p>
-          <button>Go</button>
         </motion.div>
         <motion.div
           className="box"
           whileHover={{ background: "lightgray", color: "black" }}
         >
-          <h2>Branding</h2>
+          <h2>Diklat Astra-Sinarmas UGM Tingkat Advance</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
+            Mengembangkan keterampilan lanjutan dengan mempelajari Next.js untuk website dan implementasi Maps pada aplikasi Android. 
           </p>
-          <button>Go</button>
         </motion.div>
         <motion.div
           className="box"
           whileHover={{ background: "lightgray", color: "black" }}
         >
-          <h2>Branding</h2>
+          <h2>Praktik Kerja Lapangan di Sekolah Vokasi UGM</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            libero enim nisi aliquam consectetur expedita magni eius ex corrupti
-            animi! Ad nam pariatur assumenda quae mollitia libero repellat
-            explicabo maiores?
+            Menerapkan ilmu yang didapat dengan menyelesaikan proyek nyata seperti aplikasi Android Biomastery, website Rumahepstopik.
           </p>
-          <button>Go</button>
         </motion.div>
       </motion.div>
     </motion.div>

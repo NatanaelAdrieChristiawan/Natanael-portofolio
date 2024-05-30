@@ -7,25 +7,28 @@ const items = [
     id: 1,
     title: "Pengaduan Masyarakat",
     img: "/Pemas.png",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    desc: "Website Pengaduan Masyarakat dengan framework Laravel menggunakan database MySql. Untuk saat ini projek tersebut masih belum di hosting namun dalam waktu dekat akan segera saya deploy",
   },
   {
     id: 2,
     title: "Tech News",
     img: "/Technews.png",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    desc: "Tech News NNK News merupakan website artikel tentang teknologi menggunakan Next.Js 14 dan menggunakan TailwindCss. Website ini berisi artikel-artikel yang bisa kita buat dengan melakukan login terlebih dahulu. Website ini sudah terintegrasi dengan login Google dan Github, serta bisa memilih gambar melalui library Cloudinary. Website ini menggunakan database MongoDB",
+    link: "https://technews-natan-king.vercel.app/"
   },
   {
     id: 3,
     title: "KPH Yogyakarta",
     img: "/kphyogya.png",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    desc: "Website KPH Yogyakarta adalah Website yang berisi data-data yang berhubungan dengan kehutanan. Website ini menggunakan framework laravel dan database MySql. Website ini merupakan salah satu projek yang di kerjakan saat PKL di SV UGM",
+    link: "https://kph.trpl.space/"
   },
   {
     id: 4,
     title: "Dfunds",
     img: "/dfunds.png",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ab id ad nesciunt quo aut corporis modi? Voluptate, quos sunt dolorum facilis, id eum sequi placeat accusantium saepe eos laborum.",
+    desc: "Dfunds juga salah satu projek yang dikerjaka saat PKL di SV UGM. Website Dfunds merupakan web yang bertujuan untuk administrasi berbagai dokumen untuk berbagai keperluan. Website ini menggunakan framework Laravel dan database MySql",
+    link: "https://link-to-pengaduan-masyarakat.com"
   },
 ];
 
@@ -49,7 +52,9 @@ const Single = ({ item }) => {
       <motion.div className="textContainer" style={{ y }}>
         <h2>{item.title}</h2>
         <p>{item.desc}</p>
-        <button>See Demo</button>
+        <a href={item.link} target="_blank" rel="noopener noreferrer">
+              <button>See Demo</button>
+        </a>
       </motion.div>
       </div>
     </div>

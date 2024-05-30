@@ -17,6 +17,13 @@
             padding: 20px;
         }
 
+        @include tablet{
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 70px;
+            padding: 70px;
+        }
+
         span{
             font-weight: bold;
 
