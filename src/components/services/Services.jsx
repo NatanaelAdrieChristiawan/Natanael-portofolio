@@ -1,11 +1,10 @@
 import { useRef } from "react";
 import "./services.scss";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 const variants = {
   initial: {
-    x: -500,
-    y: 100,
+    y: 500,
     opacity: 0,
   },
   animate: {
@@ -20,20 +19,15 @@ const variants = {
 };
 
 const Services = () => {
-
-  const ref = useRef()
-
-  const isInView = useInView(ref, { margin: "-100px" })
+  const ref = useRef();
 
   return (
     <motion.div
-      className="services"
-      variants={variants}
-      initial="initial"
-      // animate="animate"
-      // whileInView="animate"
       ref={ref}
-      animate={"animate"}
+      className="services"
+      initial="initial"
+      whileInView="animate"
+      variants={variants}
     >
       <motion.div className="textContainer" variants={variants}>
         <p>
@@ -58,7 +52,7 @@ const Services = () => {
       <motion.div className="listContainer" variants={variants}>
         <motion.div
           className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
+          whileHover={{ backgroundColor: "lightgray", color: "black" }} // Ubah background menjadi backgroundColor
         >
           <h2>Diklat Astra-Sinarmas UGM Tingkat Beginner</h2>
           <p>
@@ -67,7 +61,7 @@ const Services = () => {
         </motion.div>
         <motion.div
           className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
+          whileHover={{ backgroundColor: "lightgray", color: "black" }} // Ubah background menjadi backgroundColor
         >
           <h2>Diklat Astra-Sinarmas UGM Tingkat Intermediate</h2>
           <p>
@@ -76,7 +70,7 @@ const Services = () => {
         </motion.div>
         <motion.div
           className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
+          whileHover={{ backgroundColor: "lightgray", color: "black" }} // Ubah background menjadi backgroundColor
         >
           <h2>Diklat Astra-Sinarmas UGM Tingkat Advance</h2>
           <p>
@@ -85,9 +79,9 @@ const Services = () => {
         </motion.div>
         <motion.div
           className="box"
-          whileHover={{ background: "lightgray", color: "black" }}
+          whileHover={{ backgroundColor: "lightgray", color: "black" }} // Ubah background menjadi backgroundColor
         >
-          <h2>Praktik Kerja Lapangan di Sekolah Vokasi UGM</h2>
+          <motion.h2>Praktik Kerja Lapangan di Sekolah Vokasi UGM</motion.h2>
           <p>
             Menerapkan ilmu yang didapat dengan menyelesaikan proyek nyata seperti aplikasi Android Biomastery, website Rumahepstopik.
           </p>

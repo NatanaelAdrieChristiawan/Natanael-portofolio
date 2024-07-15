@@ -35,6 +35,7 @@
           font-size: 15px;
           text-align: right;
           margin-left: 80px;
+          margin-top: 70px;
         }
     }
 
@@ -67,7 +68,7 @@
         @include mobile{
           flex-direction: column;
           text-align: center;
-          gap: 65px;
+          gap: 25px;
         }
 
         img{
@@ -79,7 +80,7 @@
             @include mobile{
               width: 200px;
               height: 50px;
-              margin-top: -50px;
+              margin-top: 20px;
             }
         }
 
@@ -131,7 +132,7 @@
           border: none;
           align-items: center;
           gap: 20px;
-          padding: 20px;
+          padding: 15px;
         }
 
         p{
