@@ -19,6 +19,7 @@ const Navbar = () => {
                 <a href="https://www.facebook.com/natanael.a.christiawan/" target="_blank" rel="noopener noreferrer"><img src="/facebook.png" alt="" /></a>
                 <a href="https://www.instagram.com/natanael_prakosa" target="_blank" rel="noopener noreferrer"><img src="/instagram.png" alt="" /></a>
                 <a href="https://x.com/Natanael_Adrie" target="_blank" rel="noopener noreferrer"><img src="/X.png" alt="" /></a>
+                <a href="https://www.linkedin.com/in/natanael-adrie-christiawan/" target="_blank" rel="noopener noreferrer"><img src="/linkedin.png" alt="" /></a>
             </div>
         </div>
     </div>
