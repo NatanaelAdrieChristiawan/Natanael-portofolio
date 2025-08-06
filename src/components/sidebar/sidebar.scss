@@ -21,6 +21,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 
     // Properti ini tidak lagi diperlukan di sini karena .bg yang menanganinya
     // background-color: white;
@@ -58,6 +59,7 @@
         a {
             // Tidak ada perubahan di sini
             font-size: 40px;
+            color: black;
 
             @include mobile {
                 font-size: 20px;
