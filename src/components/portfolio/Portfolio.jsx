@@ -5,9 +5,10 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 const items = [
   {
     id: 1,
-    title: "Pengaduan Masyarakat",
-    img: "/Pemas.png",
+    title: "Serval Pest",
+    img: "works/serval.png",
     desc: "Website Pengaduan Masyarakat dengan framework Laravel menggunakan database MySql. Untuk saat ini projek tersebut masih belum di hosting namun dalam waktu dekat akan segera saya deploy",
+    link: "https://www.servalpestmanagement.com/"
   },
   {
     id: 2,
@@ -25,10 +26,10 @@ const items = [
   },
   {
     id: 4,
-    title: "Dfunds",
-    img: "/dfunds.png",
+    title: "Everrise Plastic",
+    img: "works/everrise.png",
     desc: "Dfunds juga salah satu projek yang dikerjaka saat PKL di SV UGM. Website Dfunds merupakan web yang bertujuan untuk administrasi berbagai dokumen untuk berbagai keperluan. Website ini menggunakan framework Laravel dan database MySql",
-    link: "https://link-to-pengaduan-masyarakat.com"
+    link: "https://evrplas.com/"
   },
 ];
 
@@ -53,7 +54,7 @@ const Single = ({ item }) => {
         <h2>{item.title}</h2>
         <p>{item.desc}</p>
         <a href={item.link} target="_blank" rel="noopener noreferrer">
-              <button>See Demo</button>
+              <button>Visit</button>
         </a>
       </motion.div>
       </div>
