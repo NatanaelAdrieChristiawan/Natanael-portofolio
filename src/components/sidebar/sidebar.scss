@@ -1,30 +1,50 @@
 @import "..//..//app.scss";
 
+.sidebar {
+    // --- PERUBAHAN UTAMA DIMULAI DI SINI ---
 
-.sidebar{
+    // 1. Membuat seluruh wadah sidebar "mengambang" di atas halaman
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998; // Z-index untuk wadah utama
+
+    // 2. Mencegah wadah transparan menangkap klik mouse/sentuhan
+    pointer-events: none;
+
+    // --- AKHIR DARI PERUBAHAN UTAMA ---
+
+    // Properti asli Anda untuk menengahkan (tetap berguna)
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    color: black;
 
-    .bg{
+    // Properti ini tidak lagi diperlukan di sini karena .bg yang menanganinya
+    // background-color: white;
+    // color: black;
 
+    .bg {
+        // Kode .bg Anda sudah benar, tidak perlu diubah
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
         width: 400px;
         background: white;
-        z-index: 999;
+        z-index: 999; // Z-index lebih tinggi agar di atas wadah
 
-        @include mobile{
+        // 3. Memastikan menu bisa diklik saat terbuka
+        pointer-events: auto;
+
+        @include mobile {
             width: 200px;
         }
 
-        
-        .links{
+        .links {
+            // Tidak ada perubahan di sini
             position: absolute;
             width: 100%;
             height: 100%;
@@ -35,16 +55,18 @@
             gap: 20px;
         }
 
-        a{
+        a {
+            // Tidak ada perubahan di sini
             font-size: 40px;
 
-            @include mobile{
+            @include mobile {
                 font-size: 20px;
-            }        
+            }
         }
     }
 
-    button{
+    button {
+        // Kode button Anda sudah benar, tidak perlu diubah
         z-index: 999;
         width: 50px;
         height: 50px;
@@ -55,6 +77,8 @@
         background-color: transparent;
         border: none;
         cursor: pointer;
-    }
 
+        // 4. Memastikan tombol selalu bisa diklik
+        pointer-events: auto;
+    }
 }

@@ -24,6 +24,7 @@ a {
 section{
     height: calc(var(--vh, 1vh) * 100);
     scroll-snap-align: center;
+    overflow-x: hidden;
 }
 
 @mixin mobile {
