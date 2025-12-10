@@ -26,9 +26,18 @@ const itemVariants = {
 };
 
 const Links = () => {
-    const items = ["Homepage", "Experiences", "Portfolio", "Contact"];
+    const items = ["Homepage", "About Me", "Portfolio", "Contact"];
 
-    const scrollToSection = (id) => {
+    // Mapping untuk menangani label dengan spasi ke ID yang sesuai
+    const itemToId = {
+        "Homepage": "Homepage",
+        "About Me": "About-Me",
+        "Portfolio": "Portfolio",
+        "Contact": "Contact"
+    };
+
+    const scrollToSection = (item) => {
+        const id = itemToId[item] || item;
         const section = document.getElementById(id);
         if (section) {
             section.scrollIntoView({ behavior: "smooth" });

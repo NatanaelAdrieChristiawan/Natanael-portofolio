@@ -7,7 +7,7 @@ const items = [
     id: 1,
     title: "Serval Pest",
     img: "works/serval.png",
-    desc: "Website Pengaduan Masyarakat dengan framework Laravel menggunakan database MySql. Untuk saat ini projek tersebut masih belum di hosting namun dalam waktu dekat akan segera saya deploy",
+    desc: "Website responsive menggunakan react.js untuk Serval Integrated Pest Management di Malaysia, fokus pada lead generation dengan fitur Same Day Service, Pest Free Guarantee, dan Eco Friendly Treatment. Dilengkapi navigasi terpisah untuk layanan residential dan commercial/industrial dengan CTA yang jelas untuk konversi optimal.",
     link: "https://www.servalpestmanagement.com/"
   },
   {
@@ -41,25 +41,25 @@ const Single = ({ item }) => {
     // offset: ["end end", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0,1], [-300, 300]);
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
 
-  return ( 
-  <section>
-    <div className="container">
-      <div className="wrapper">
-        <div className="imageContainer" ref={ref}>
-          <img src={item.img} alt="" />
-        </div>
-      <motion.div className="textContainer" style={{ y }}>
-        <h2>{item.title}</h2>
-        <p>{item.desc}</p>
-        <a href={item.link} target="_blank" rel="noopener noreferrer">
+  return (
+    <section>
+      <div className="container">
+        <div className="wrapper">
+          <div className="imageContainer" ref={ref}>
+            <img src={item.img} alt="" />
+          </div>
+          <motion.div className="textContainer" style={{ y }}>
+            <h2>{item.title}</h2>
+            <p>{item.desc}</p>
+            <a href={item.link} target="_blank" rel="noopener noreferrer">
               <button>Visit</button>
-        </a>
-      </motion.div>
+            </a>
+          </motion.div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 };
 
@@ -71,17 +71,15 @@ const Portfolio = () => {
     offset: ["end end", "start start"],
   });
 
-  const scaleX = useSpring(scrollYProgress,  {
-    stiffness:100,
-    damping:30,
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
   })
-
-
-
+  
   return (
     <div className="portfolio" ref={ref}>
       <div className="progress">
-        <h1>My Works</h1>
+        <h1>My Portfolio</h1>
         <motion.div style={{ scaleX }} className="progressBar"></motion.div>
       </div>
       {items.map((item) => (

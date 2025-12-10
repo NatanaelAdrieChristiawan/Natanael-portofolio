@@ -31,12 +31,12 @@ const App = () => {
 
   return (
     <div>
-      <Cursor/>
+      <Cursor />
       <section id="Homepage">
         <Navbar />
         <Hero />
       </section>
-      <section id="Experiences">
+      <section id="About-Me">
         <Parallax type="services" />
       </section>
       <section>
