@@ -19,10 +19,10 @@ const items = [
   },
   {
     id: 3,
-    title: "KPH Yogyakarta",
-    img: "/kphyogya.png",
-    desc: "Website KPH Yogyakarta adalah Website yang berisi data-data yang berhubungan dengan kehutanan. Website ini menggunakan framework laravel dan database MySql. Website ini merupakan salah satu projek yang di kerjakan saat PKL di SV UGM",
-    link: "https://kph.trpl.space/"
+    title: "Mari Renov",
+    img: "works/MariRenov.png",
+    desc: "Website jasa konstruksi interior dengan fokus pada UI/UX premium dan konversi tinggi. Projek ini merupakan pengembangan landing page untuk layanan renovasi rumah premium. Fokus utama proyek ini adalah menghadirkan desain yang elegan, responsif, dan informatif untuk meningkatkan konversi konsultasi pelanggan. Projek ini menggunakan Tech Stack React.js, dan Tailwind.css",
+    link: "https://www.marirenov.com"
   },
   {
     id: 4,

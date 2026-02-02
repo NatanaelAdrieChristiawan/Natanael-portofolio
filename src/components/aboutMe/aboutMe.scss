@@ -1,0 +1,374 @@
+@import "../../app.scss";
+
+// Color Palette Variables (Prestige Dark Mode)
+$bg-dark: #0A0A0A;
+$card-bg: rgba(255, 255, 255, 0.03);
+$card-border: rgba(255, 255, 255, 0.05);
+$primary-accent: #FBBF24; // Gold/Amber
+$text-primary: #F8FAFC;
+$text-secondary: #94A3B8;
+$blur-strength: 16px;
+$cyan-accent: #22D3EE;
+$gold-accent: #FBBF24;
+
+.aboutMe {
+  background: linear-gradient(180deg, #0c0c1d, #111132);
+  min-height: 100vh;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mobile {
+    padding: 60px 16px;
+  }
+
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  // Header Title Styling
+  .headerTitle {
+    text-align: center;
+    margin-bottom: 60px;
+
+    @include mobile {
+      margin-bottom: 40px;
+    }
+
+    .accent {
+      display: block;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: $primary-accent;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: $text-primary;
+      margin: 0;
+
+      @include mobile {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  // Bento Grid Layout
+  .bentoGrid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1.6fr 1fr;
+
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+    }
+
+    @include mobile {
+      gap: 16px;
+    }
+  }
+
+  // Card Base Styling (Glassmorphism)
+  .card {
+    backdrop-filter: blur($blur-strength);
+    -webkit-backdrop-filter: blur($blur-strength);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid $card-border;
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+    @include mobile {
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  // Bio Card
+  .bioCard {
+    .bioContent {
+      display: flex;
+      gap: 2rem;
+
+      @include mobile {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    .profileSection {
+      flex-shrink: 0;
+
+      .profileImage {
+        width: 180px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+
+        @include mobile {
+          width: 140px;
+          height: 170px;
+          margin: 0 auto;
+          display: block;
+        }
+      }
+    }
+
+    .textSection {
+      flex: 1;
+
+      .headline {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $text-primary;
+        margin: 0 0 8px 0;
+
+        @include mobile {
+          font-size: 1.5rem;
+          text-align: center;
+        }
+      }
+
+      .subHeadline {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: $primary-accent;
+        margin: 0 0 24px 0;
+
+        @include mobile {
+          font-size: 1rem;
+          text-align: center;
+          margin-bottom: 16px;
+        }
+      }
+
+      .bodyText {
+        p {
+          font-size: 1rem;
+          font-weight: 300;
+          line-height: 1.7;
+          color: $text-secondary;
+          margin: 0 0 16px 0;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          @include mobile {
+            font-size: 0.9rem;
+            text-align: justify;
+          }
+        }
+      }
+    }
+
+    // Decorative Glow Effect
+    .decoration {
+      position: absolute;
+      bottom: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba($primary-accent, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+  }
+
+  // Right Column
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include mobile {
+      gap: 16px;
+    }
+  }
+
+  // Card Title Styling
+  .cardTitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $text-secondary;
+    margin: 0 0 24px 0;
+
+    @include mobile {
+      margin-bottom: 16px;
+    }
+  }
+
+  // Tech Stack Card
+  .techStackCard {
+    .iconsGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+
+      @include mobile {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+    }
+
+    .iconWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+
+      .techIcon {
+        font-size: 2.5rem;
+        color: $text-secondary;
+        transition: color 0.3s ease;
+
+        @include mobile {
+          font-size: 2rem;
+        }
+      }
+
+      .iconLabel {
+        font-size: 0.7rem;
+        color: $text-secondary;
+        text-align: center;
+        transition: color 0.3s ease;
+
+        @include mobile {
+          font-size: 0.6rem;
+        }
+      }
+
+      &:hover {
+        .techIcon {
+          color: var(--brand-color);
+        }
+
+        .iconLabel {
+          color: $text-primary;
+        }
+      }
+    }
+  }
+
+  // Certifications Card
+  .certificationsCard {
+    flex: 1;
+
+    .certList {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .certItem {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: background-color 0.2s ease;
+      cursor: pointer;
+
+      @include mobile {
+        padding: 12px;
+        gap: 12px;
+      }
+
+      .certIcon {
+        flex-shrink: 0;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include mobile {
+          font-size: 1.5rem;
+        }
+      }
+
+      .certInfo {
+        flex: 1;
+
+        .certTitle {
+          font-size: 1rem;
+          font-weight: 600;
+          color: $text-primary;
+          margin: 0 0 4px 0;
+
+          @include mobile {
+            font-size: 0.9rem;
+          }
+        }
+
+        .certIssuer {
+          font-size: 0.875rem;
+          color: $text-secondary;
+          margin: 0 0 8px 0;
+
+          @include mobile {
+            font-size: 0.8rem;
+          }
+        }
+
+        .certDate {
+          font-size: 0.75rem;
+          font-weight: 500;
+          padding: 4px 8px;
+          border-radius: 6px;
+          display: inline-block;
+        }
+      }
+
+      // Cyan Glow Accent (BNSP)
+      &.cyan-glow {
+        .certIcon {
+          color: $cyan-accent;
+        }
+
+        .certDate {
+          background: rgba($cyan-accent, 0.15);
+          color: $cyan-accent;
+        }
+
+        &:hover {
+          box-shadow: 0 0 20px rgba($cyan-accent, 0.1);
+        }
+      }
+
+      // Gold Glow Accent (PKL)
+      &.gold-glow {
+        .certIcon {
+          color: $gold-accent;
+        }
+
+        .certDate {
+          background: rgba($gold-accent, 0.15);
+          color: $gold-accent;
+        }
+
+        &:hover {
+          box-shadow: 0 0 20px rgba($gold-accent, 0.1);
+        }
+      }
+    }
+  }
+}
