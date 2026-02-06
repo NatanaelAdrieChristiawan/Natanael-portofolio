@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./contact.scss";
-import { motion,useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import emailjs from '@emailjs/browser';
 
 const variants = {
@@ -18,51 +18,152 @@ const variants = {
   },
 };
 
+const buttonVariants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+    scale: 0.9
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 200,
+      damping: 15
+    }
+  },
+  hover: {
+    scale: 1.05,
+    boxShadow: "0 0 30px rgba(255, 165, 0, 0.4)",
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10
+    }
+  },
+  tap: {
+    scale: 0.95
+  }
+};
+
+const modalVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.8,
+    y: 50
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 25
+    }
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.8,
+    y: 50,
+    transition: {
+      duration: 0.2
+    }
+  }
+};
+
+const overlayVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.3 }
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.2 }
+  }
+};
+
 const Contact = () => {
 
-    const ref =useRef();
-    const formRef = useRef();
-    const [error, setError] = useState(false);
-    const [success, setSuccess] = useState(false);
+  const ref = useRef();
+  const formRef = useRef();
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [previewType, setPreviewType] = useState(null); // 'cv' or 'ratecard'
 
-    const isInView = useInView(ref, {margin: "-100px"});
+  const isInView = useInView(ref, { margin: "-100px" });
 
-    useEffect(() => {
-      let timeoutId;
+  const documents = {
+    cv: {
+      title: "Curriculum Vitae",
+      path: "/cv&ratecard/CV_NATANAEL.pdf",
+      icon: "📄"
+    },
+    ratecard: {
+      title: "Rate Card & Service Agreement",
+      path: "/cv&ratecard/RateCard&ServiceAgreement_Natanael.PDF",
+      icon: "💼"
+    }
+  };
 
-      if (error || success) {
-        timeoutId = setTimeout(() => {
-          setError(false);
-          setSuccess(false);
-        }, 3000);
-      }
+  const openPreview = (type) => {
+    setPreviewType(type);
+    document.body.style.overflow = 'hidden';
+  };
 
-      return () => clearTimeout(timeoutId);
-    }, [error, success]);
+  const closePreview = () => {
+    setPreviewType(null);
+    document.body.style.overflow = 'unset';
+  };
 
-      const sendEmail = (e) => {
-        e.preventDefault();
+  const handleDownload = () => {
+    if (previewType) {
+      const link = document.createElement('a');
+      link.href = documents[previewType].path;
+      link.download = documents[previewType].path.split('/').pop();
+      link.click();
+    }
+  };
 
-        emailjs
-          .sendForm(
-            "service_1bjeknq", 
-            "template_hst4tvo", 
-            formRef.current,
-            "-PSr_PXKOJJFFcHPU",
-          )
-          .then(
-            (result) => {
-              setSuccess(true);
-            },
-            (error) => {
-              setError(true);
-            }
-          );
-      };
+  useEffect(() => {
+    let timeoutId;
+
+    if (error || success) {
+      timeoutId = setTimeout(() => {
+        setError(false);
+        setSuccess(false);
+      }, 3000);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [error, success]);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_1bjeknq",
+        "template_hst4tvo",
+        formRef.current,
+        "-PSr_PXKOJJFFcHPU",
+      )
+      .then(
+        (result) => {
+          setSuccess(true);
+        },
+        (error) => {
+          setError(true);
+        }
+      );
+  };
 
   return (
     <motion.div
-    // ref={ref}
+      // ref={ref}
       className="contact"
       variants={variants}
       initial="initial"
@@ -82,6 +183,59 @@ const Contact = () => {
           <h2>Phone</h2>
           <span>+62 85713199721</span>
         </motion.div>
+
+        {/* Document Preview Buttons */}
+        <motion.div className="documentButtons" variants={variants}>
+          <motion.button
+            className="docButton cvButton"
+            variants={buttonVariants}
+            initial="initial"
+            animate="animate"
+            whileHover="hover"
+            whileTap="tap"
+            onClick={() => openPreview('cv')}
+          >
+            <span className="docIcon">📄</span>
+            <span className="docText">View CV</span>
+            <motion.span
+              className="buttonGlow"
+              animate={{
+                opacity: [0.5, 1, 0.5],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </motion.button>
+          <motion.button
+            className="docButton ratecardButton"
+            variants={buttonVariants}
+            initial="initial"
+            animate="animate"
+            whileHover="hover"
+            whileTap="tap"
+            onClick={() => openPreview('ratecard')}
+          >
+            <span className="docIcon">💼</span>
+            <span className="docText">View Rate Card</span>
+            <motion.span
+              className="buttonGlow"
+              animate={{
+                opacity: [0.5, 1, 0.5],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1
+              }}
+            />
+          </motion.button>
+        </motion.div>
       </motion.div>
       <div className="formContainer">
         <motion.div
@@ -94,9 +248,9 @@ const Contact = () => {
             <motion.path
               strokeWidth={0.2}
               fill="none"
-              initial={{ pathLength:0 }}
-              whileInView={{ pathLength:1 }}
-              transition={{ duration:3 }}
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              transition={{ duration: 3 }}
               d="M28.189,16.504h-1.666c0-5.437-4.422-9.858-9.856-9.858l-0.001-1.664C23.021,4.979,28.189,10.149,28.189,16.504z
                 M16.666,7.856L16.665,9.52c3.853,0,6.983,3.133,6.981,6.983l1.666-0.001C25.312,11.735,21.436,7.856,16.666,7.856z M16.333,0
                 C7.326,0,0,7.326,0,16.334c0,9.006,7.326,16.332,16.333,16.332c0.557,0,1.007-0.45,1.007-1.006c0-0.559-0.45-1.01-1.007-1.01
@@ -120,14 +274,68 @@ const Contact = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 4, duration: 1 }}
         >
-          <input type="text" required placeholder="Name" name="name"/>
-          <input type="email" required placeholder="Email" name="email"/>
-          <textarea rows={8} placeholder="Message" name="message"/>
+          <input type="text" required placeholder="Name" name="name" />
+          <input type="email" required placeholder="Email" name="email" />
+          <textarea rows={8} placeholder="Message" name="message" />
           <button>Submit</button>
           {error && <p>Error sending message</p>}
           {success && <p>Message sent successfully</p>}
         </motion.form>
       </div>
+
+      {/* Document Preview Modal */}
+      <AnimatePresence>
+        {previewType && (
+          <motion.div
+            className="modalOverlay"
+            variants={overlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            onClick={closePreview}
+          >
+            <motion.div
+              className="modalContent"
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="modalHeader">
+                <h3>{documents[previewType].title}</h3>
+                <motion.button
+                  className="closeButton"
+                  onClick={closePreview}
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  ✕
+                </motion.button>
+              </div>
+              <div className="modalBody">
+                <iframe
+                  src={documents[previewType].path}
+                  title={documents[previewType].title}
+                />
+              </div>
+              <div className="modalFooter">
+                <motion.button
+                  className="downloadButton"
+                  onClick={handleDownload}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 0 25px rgba(255, 165, 0, 0.5)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span>⬇️</span> Download {documents[previewType].title}
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

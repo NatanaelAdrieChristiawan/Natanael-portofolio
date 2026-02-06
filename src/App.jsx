@@ -9,6 +9,7 @@ import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
 import Portfolio from "./components/portfolio/Portfolio";
 import AboutMe from "./components/aboutMe/AboutMe";
+import ClientReviews from "./components/clientReviews/ClientReviews";
 
 const App = () => {
   // 2. Menambahkan useEffect untuk memperbaiki masalah unit 'vh' di mobile
@@ -46,6 +47,12 @@ const App = () => {
         <Parallax type="portfolio" />
       </section>
       <Portfolio />
+      <section id="Client-Reviews">
+        <Parallax type="clientReviews" />
+      </section>
+      <section>
+        <ClientReviews />
+      </section>
       <section id="Contact">
         <Contact />
       </section>

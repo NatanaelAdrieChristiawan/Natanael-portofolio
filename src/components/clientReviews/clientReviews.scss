@@ -1,0 +1,222 @@
+@import "../../app.scss";
+
+// Color Palette Variables (Prestige Dark Mode - matching AboutMe)
+$bg-dark: #0A0A0A;
+$card-bg: rgba(255, 255, 255, 0.03);
+$card-border: rgba(255, 255, 255, 0.05);
+$primary-accent: #FBBF24; // Gold/Amber
+$text-primary: #F8FAFC;
+$text-secondary: #94A3B8;
+$blur-strength: 16px;
+$purple-accent: #A855F7;
+$gold-accent: #FBBF24;
+
+.clientReviews {
+    background: linear-gradient(180deg, #1a1a3e, #0c0c1d);
+    min-height: 100vh;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mobile {
+        padding: 60px 16px;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    // Header Title Styling (matching AboutMe)
+    .headerTitle {
+        text-align: center;
+        margin-bottom: 60px;
+
+        @include mobile {
+            margin-bottom: 40px;
+        }
+
+        .accent {
+            display: block;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: $purple-accent;
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: $text-primary;
+            margin: 0;
+
+            @include mobile {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    // Reviews Grid
+    .reviewsGrid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: repeat(3, 1fr);
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include mobile {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+    }
+
+    // Review Card (Glassmorphism)
+    .reviewCard {
+        backdrop-filter: blur($blur-strength);
+        -webkit-backdrop-filter: blur($blur-strength);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+        border: 1px solid $card-border;
+        border-radius: 24px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @include mobile {
+            padding: 1.5rem;
+            border-radius: 16px;
+            gap: 16px;
+        }
+
+        &:hover {
+            border-color: rgba($purple-accent, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba($purple-accent, 0.1);
+        }
+
+        // Quote Icon
+        .quoteIcon {
+            font-size: 2rem;
+            color: $purple-accent;
+            opacity: 0.5;
+
+            @include mobile {
+                font-size: 1.5rem;
+            }
+        }
+
+        // Review Text
+        .reviewText {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: $text-secondary;
+            flex: 1;
+
+            @include mobile {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+        }
+
+        // Star Rating
+        .starRating {
+            display: flex;
+            gap: 4px;
+
+            .star {
+                font-size: 1rem;
+                transition: color 0.2s ease;
+
+                &.filled {
+                    color: $gold-accent;
+                }
+
+                &.empty {
+                    color: rgba(255, 255, 255, 0.1);
+                }
+            }
+        }
+
+        // Client Info
+        .clientInfo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+            @include mobile {
+                gap: 12px;
+                padding-top: 12px;
+            }
+
+            .avatar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                overflow: hidden;
+                flex-shrink: 0;
+                background: linear-gradient(135deg, $purple-accent 0%, #7C3AED 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 2px solid rgba(255, 255, 255, 0.1);
+
+                @include mobile {
+                    width: 44px;
+                    height: 44px;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .initial {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: $text-primary;
+                    letter-spacing: 0.05em;
+
+                    @include mobile {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+
+            .details {
+                flex: 1;
+
+                .clientName {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: $text-primary;
+                    margin: 0 0 4px 0;
+
+                    @include mobile {
+                        font-size: 0.9rem;
+                    }
+                }
+
+                .clientRole {
+                    font-size: 0.875rem;
+                    color: $text-secondary;
+                    margin: 0;
+
+                    @include mobile {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

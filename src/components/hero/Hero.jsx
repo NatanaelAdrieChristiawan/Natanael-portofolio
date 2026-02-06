@@ -88,7 +88,7 @@ const Hero = () => {
         initial="initial"
         animate="animate"
       >
-        Website Developer Frontend and Backend
+        Website and Application Developer
       </motion.div>
       <motion.div
         className="imageContainer"
