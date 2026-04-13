@@ -12,24 +12,31 @@ const items = [
   },
   {
     id: 2,
-    title: "Tech News",
-    img: "/Technews.png",
-    desc: "Tech News NNK News merupakan website artikel tentang teknologi menggunakan Next.Js 14 dan menggunakan TailwindCss. Website ini berisi artikel-artikel yang bisa kita buat dengan melakukan login terlebih dahulu. Website ini sudah terintegrasi dengan login Google dan Github, serta bisa memilih gambar melalui library Cloudinary. Website ini menggunakan database MongoDB",
-    link: "https://technews-natan-king.vercel.app/"
-  },
-  {
-    id: 3,
     title: "Mari Renov",
     img: "works/MariRenov.png",
     desc: "Website jasa konstruksi interior dengan fokus pada UI/UX premium dan konversi tinggi. Projek ini merupakan pengembangan landing page untuk layanan renovasi rumah premium. Fokus utama proyek ini adalah menghadirkan desain yang elegan, responsif, dan informatif untuk meningkatkan konversi konsultasi pelanggan. Projek ini menggunakan Tech Stack React.js, dan Tailwind.css",
     link: "https://www.marirenov.com"
   },
   {
-    id: 4,
+    id: 3,
     title: "Everrise Plastic",
     img: "works/everrise.png",
-    desc: "Dfunds juga salah satu projek yang dikerjaka saat PKL di SV UGM. Website Dfunds merupakan web yang bertujuan untuk administrasi berbagai dokumen untuk berbagai keperluan. Website ini menggunakan framework Laravel dan database MySql",
+    desc: "Website e-commerce untuk Everrise Plastic, distributor plastik terkemuka di Indonesia. Projek ini merupakan pengembangan platform e-commerce dengan fokus pada user experience dan kemudahan transaksi. Website ini menggunakan framework Laravel dan database MySql",
     link: "https://evrplas.com/"
+  },
+  {
+    id: 4,
+    title: "Ataka Technology",
+    img: "works/AtakaTechnology.png",
+    desc: "Projek Landing Page Ataka Technology Indonesia – Perusahaan Teknologi & IT. Projek ini merupakan pengembangan website company profile interaktif yang telah dilengkapi dengan sistem Content Management System (CMS). Fokus utama proyek ini adalah menghadirkan desain yang modern dan dinamis, sekaligus memudahkan admin/klien dalam mengelola konten website secara mandiri. Projek ini menggunakan Tech Stack Laravel, Filament, dan Tailwind CSS.",
+    link: "https://ataka.co.id/"
+  },
+  {
+    id: 5,
+    title: "Ataka Sarana Indonesia",
+    img: "works/AtakaSarana.png",
+    desc: "Projek Landing Page Ataka Sarana Indonesia – Perusahaan Industri Manufaktur & Engineering. Projek ini merupakan pengembangan website company profile interaktif yang telah dilengkapi dengan sistem Content Management System (CMS). Fokus utama proyek ini adalah menghadirkan desain premium dengan animasi yang dinamis untuk merepresentasikan profesionalisme perusahaan, sekaligus memudahkan admin/klien dalam mengelola konten website secara mandiri. Projek ini menggunakan Tech Stack Laravel, Filament, Tailwind CSS, Alpine.js, dan GSAP.",
+    link: "https://atakasarana.id/"
   },
 ];
 
