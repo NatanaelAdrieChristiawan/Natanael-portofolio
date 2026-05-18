@@ -99,12 +99,12 @@ const Contact = () => {
   const documents = {
     cv: {
       title: "Curriculum Vitae",
-      path: "/cv&ratecard/CV_Natanael.pdf",
+      path: "/cv-ratecard/CV_NatanaelAdrieChristiawan.pdf",
       icon: "📄"
     },
     ratecard: {
       title: "Rate Card & Service Agreement",
-      path: "/cv&ratecard/RateCard&ServiceAgreement_Natanael.PDF",
+      path: "/cv-ratecard/RateCard-ServiceAgreement_Natanael.pdf",
       icon: "💼"
     }
   };
