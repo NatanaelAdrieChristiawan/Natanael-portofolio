@@ -28,20 +28,19 @@
     // color: black;
 
     .bg {
-        // Kode .bg Anda sudah benar, tidak perlu diubah
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
         width: 400px;
         background: white;
-        z-index: 999; // Z-index lebih tinggi agar di atas wadah
-
-        // 3. Memastikan menu bisa diklik saat terbuka
+        z-index: 999;
         pointer-events: auto;
+        will-change: clip-path, transform;
+        transform: translateZ(0);
 
         @include mobile {
-            width: 200px;
+            width: 250px;
         }
 
         .links {
@@ -57,12 +56,12 @@
         }
 
         a {
-            // Tidak ada perubahan di sini
-            font-size: 40px;
+            font-size: 34px;
             color: black;
+            white-space: nowrap;
 
             @include mobile {
-                font-size: 20px;
+                font-size: 18px;
             }
         }
     }

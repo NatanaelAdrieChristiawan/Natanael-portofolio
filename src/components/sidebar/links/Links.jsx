@@ -26,13 +26,14 @@ const itemVariants = {
 };
 
 const Links = () => {
-    const items = ["Homepage", "About Me", "Portfolio", "Contact"];
+    const items = ["Homepage", "About Me", "Portfolio", "Client Reviews", "Contact"];
 
     // Mapping untuk menangani label dengan spasi ke ID yang sesuai
     const itemToId = {
         "Homepage": "Homepage",
         "About Me": "About-Me",
         "Portfolio": "Portfolio",
+        "Client Reviews": "Client-Reviews",
         "Contact": "Contact"
     };
 

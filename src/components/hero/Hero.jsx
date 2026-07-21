@@ -1,5 +1,5 @@
 import "./hero.scss";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 
 const textVariants = {
   initial: {
@@ -45,6 +45,34 @@ const Hero = () => {
     }
   };
 
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseX = useSpring(x, { stiffness: 250, damping: 25 });
+  const mouseY = useSpring(y, { stiffness: 250, damping: 25 });
+  const scale = useSpring(1, { stiffness: 250, damping: 25 });
+
+  const rotateX = useTransform(mouseY, [-0.5, 0.5], [14, -14]);
+  const rotateY = useTransform(mouseX, [-0.5, 0.5], [-14, 14]);
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const xPct = (e.clientX - rect.left) / rect.width - 0.5;
+    const yPct = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseEnter = () => {
+    scale.set(1.05);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    scale.set(1);
+  };
+
   return (
     <div className="hero">
       <div className="wrapper">
@@ -81,6 +109,29 @@ const Hero = () => {
             alt=""
           />
         </motion.div>
+        <motion.div
+          className="imageContainer"
+          variants={textVariants}
+          initial="initial"
+          animate="animate"
+          onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          style={{ perspective: 1000 }}
+        >
+          <motion.img
+            src="/LogoNatan.png"
+            alt="Natanael Adrie Logo"
+            style={{
+              rotateX,
+              rotateY,
+              scale,
+              transformStyle: "preserve-3d",
+              willChange: "transform",
+              cursor: "pointer",
+            }}
+          />
+        </motion.div>
       </div>
       <motion.div
         className="slidingTextContainer"
@@ -89,14 +140,6 @@ const Hero = () => {
         animate="animate"
       >
         Website and Application Developer
-      </motion.div>
-      <motion.div
-        className="imageContainer"
-        variants={textVariants}
-        initial="initial"
-        animate="animate"
-      >
-        <img src="hero2.png" alt="" />
       </motion.div>
     </div>
   );

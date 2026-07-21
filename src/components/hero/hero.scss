@@ -20,37 +20,48 @@
         height: 100%;
         margin: auto;
         padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 2;
 
         @include mobile{
+            flex-direction: column;
             padding: 0 15px;
+            justify-content: center;
+        }
+
+        @include tablet{
+            flex-direction: column;
+            justify-content: center;
         }
 
         .textContainer{
             width: 50%;
-            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
             position: relative;
             z-index: 2;
 
             @include mobile{
-                height: 50%;
+                height: auto;
                 width: 100%;
                 gap: 15px;
                 align-items: center;
                 text-align: center;
-                padding-top: 60px;
+                padding-top: 20px;
             }
 
             @include tablet {
-                height: 50%;
+                height: auto;
                 width: 100%;
-                gap: 25px;
+                gap: 20px;
                 align-items: center;
                 text-align: center;
-                padding-top: 40px;
+                padding-top: 20px;
             }
 
             h2{
@@ -137,40 +148,39 @@
                 }
             }
         }
-    }
 
-    .imageContainer {
-        height: 100%;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 1;
-
-        @include mobile{
-            height: 50%;
-            width: 100%;
-            top: auto;
-            bottom: 0;
+        .imageContainer {
+            width: 50%;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
-        }
-
-        @include tablet{
-            height: 60%;
-            bottom: 0;
-            right: 5%;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: bottom;
+            z-index: 2;
 
             @include mobile{
-                max-width: 80%;
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            @include tablet{
+                width: 100%;
+                margin-top: 30px;
+            }
+
+            img {
+                max-width: 550px;
+                width: 100%;
                 height: auto;
+                object-fit: contain;
+
+                @include tablet{
+                    max-width: 380px;
+                    width: 85%;
+                }
+
+                @include mobile{
+                    max-width: 280px;
+                    width: 85%;
+                }
             }
         }
     }

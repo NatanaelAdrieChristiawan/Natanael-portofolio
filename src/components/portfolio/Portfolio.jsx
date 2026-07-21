@@ -7,35 +7,35 @@ const items = [
     id: 1,
     title: "Serval Pest",
     img: "works/serval.png",
-    desc: "Website responsive menggunakan react.js untuk Serval Integrated Pest Management di Malaysia, fokus pada lead generation dengan fitur Same Day Service, Pest Free Guarantee, dan Eco Friendly Treatment. Dilengkapi navigasi terpisah untuk layanan residential dan commercial/industrial dengan CTA yang jelas untuk konversi optimal.",
+    desc: "A responsive lead-generation website built with React.js for Serval Integrated Pest Management in Malaysia. Features dedicated navigation for residential and commercial/industrial services, highlighting Same Day Service, Pest Free Guarantee, and Eco-Friendly Treatments with clear CTAs optimized for high conversion.",
     link: "https://www.servalpestmanagement.com/"
   },
   {
     id: 2,
     title: "Mari Renov",
     img: "works/MariRenov.png",
-    desc: "Website jasa konstruksi interior dengan fokus pada UI/UX premium dan konversi tinggi. Projek ini merupakan pengembangan landing page untuk layanan renovasi rumah premium. Fokus utama proyek ini adalah menghadirkan desain yang elegan, responsif, dan informatif untuk meningkatkan konversi konsultasi pelanggan. Projek ini menggunakan Tech Stack React.js, dan Tailwind.css",
+    desc: "A high-converting landing page for a premium interior home renovation and construction service. Designed with an elegant, responsive, and informative UI/UX to maximize customer consultation leads. Developed using React.js and Tailwind CSS.",
     link: "https://www.marirenov.com"
   },
   {
     id: 3,
     title: "Everrise Plastic",
     img: "works/everrise.png",
-    desc: "Website e-commerce untuk Everrise Plastic, distributor plastik terkemuka di Indonesia. Projek ini merupakan pengembangan platform e-commerce dengan fokus pada user experience dan kemudahan transaksi. Website ini menggunakan framework Laravel dan database MySql",
+    desc: "An e-commerce platform developed for Everrise Plastic, a leading plastic distributor in Indonesia. Engineered with a strong focus on seamless user experience and effortless transaction flows, powered by Laravel and MySQL.",
     link: "https://evrplas.com/"
   },
   {
     id: 4,
     title: "Ataka Technology",
     img: "works/AtakaTechnology.png",
-    desc: "Projek Landing Page Ataka Technology Indonesia – Perusahaan Teknologi & IT. Projek ini merupakan pengembangan website company profile interaktif yang telah dilengkapi dengan sistem Content Management System (CMS). Fokus utama proyek ini adalah menghadirkan desain yang modern dan dinamis, sekaligus memudahkan admin/klien dalam mengelola konten website secara mandiri. Projek ini menggunakan Tech Stack Laravel, Filament, dan Tailwind CSS.",
+    desc: "Interactive company profile landing page for Ataka Technology Indonesia, an IT & technology enterprise. Equipped with an intuitive Content Management System (CMS) enabling effortless, independent content management for administrators. Built using Laravel, Filament CMS, and Tailwind CSS.",
     link: "https://ataka.co.id/"
   },
   {
     id: 5,
     title: "Ataka Sarana Indonesia",
     img: "works/AtakaSarana.png",
-    desc: "Projek Landing Page Ataka Sarana Indonesia – Perusahaan Industri Manufaktur & Engineering. Projek ini merupakan pengembangan website company profile interaktif yang telah dilengkapi dengan sistem Content Management System (CMS). Fokus utama proyek ini adalah menghadirkan desain premium dengan animasi yang dinamis untuk merepresentasikan profesionalisme perusahaan, sekaligus memudahkan admin/klien dalam mengelola konten website secara mandiri. Projek ini menggunakan Tech Stack Laravel, Filament, Tailwind CSS, Alpine.js, dan GSAP.",
+    desc: "Premium company profile landing page for Ataka Sarana Indonesia, a manufacturing & engineering corporation. Features smooth GSAP animations and dynamic micro-interactions reflecting corporate excellence, paired with an intuitive CMS. Developed with Laravel, Filament, Tailwind CSS, Alpine.js, and GSAP.",
     link: "https://atakasarana.id/"
   },
 ];
