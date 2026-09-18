@@ -132,19 +132,19 @@ const Hero = () => {
           <motion.div variants={textVariants} className="particleTextWrapper">
             <ParticleText
               text={"Always Learning,\nAlways Growing"}
-              particleSize={isMobile ? 2.2 : 2.4}
-              density={isMobile ? 5 : 4.5}
+              particleSize={isMobile ? 1.8 : 2.4}
+              density={isMobile ? 2 : 4.5}
               color="#f8f9ff"
               highlightColor="#c4b5fd"
-              scatter={isMobile ? 100 : 160}
-              gatherDuration={1200}
-              stagger={isMobile ? 200 : 300}
+              scatter={isMobile ? 70 : 160}
+              gatherDuration={1100}
+              stagger={isMobile ? 120 : 300}
               pointerRepel={isMobile ? 0 : 36}
               repelRadius={100}
               idleDrift={0}
               trigger="mount"
-              fontSize="clamp(2.2rem, 5.2vw, 76px)"
-              fontWeight={700}
+              fontSize={isMobile ? "clamp(1.75rem, 6.8vw, 34px)" : "clamp(2.2rem, 5.2vw, 76px)"}
+              fontWeight={800}
               fontFamily="'DM Sans', sans-serif"
               textAlign="auto"
             />

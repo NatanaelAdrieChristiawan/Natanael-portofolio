@@ -9,6 +9,12 @@
   filter: drop-shadow(0 2px 14px rgba(167, 139, 250, 0.22));
 }
 
+@media (max-width: 638px) {
+  .particle-text {
+    filter: drop-shadow(0 1px 6px rgba(167, 139, 250, 0.18));
+  }
+}
+
 .particle-text__canvas {
   position: absolute;
   inset: 0;

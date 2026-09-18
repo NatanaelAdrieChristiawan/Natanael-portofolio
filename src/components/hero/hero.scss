@@ -91,8 +91,9 @@
                 text-shadow: 0 0 24px rgba(167, 139, 250, 0.25);
 
                 @include mobile{
-                    font-size: 14px;
-                    letter-spacing: 2px;
+                    font-size: 15px;
+                    letter-spacing: 2.5px;
+                    line-height: 1.35;
                 }
 
                 @include tablet{
@@ -106,7 +107,7 @@
                 height: 210px;
 
                 @include mobile {
-                    height: 90px;
+                    height: 115px;
                 }
 
                 @include tablet {
