@@ -1,28 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./cursor.scss";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const Cursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  // Start off-screen to avoid top-left flicker before mouse movement
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+
+  // High-performance spring configuration for butter-smooth tracking with zero re-renders
+  const springConfig = { damping: 28, stiffness: 350, mass: 0.1 };
+  const cursorX = useSpring(mouseX, springConfig);
+  const cursorY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    const mouseMove = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+    const handleMouseMove = (e) => {
+      // Offset by 25px so the 50px circle centers on the pointer tip
+      mouseX.set(e.clientX - 25);
+      mouseY.set(e.clientY - 25);
     };
 
-    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
-
+  }, [mouseX, mouseY]);
 
   return (
     <motion.div
       className="cursor"
-      animate={{ x: position.x+8, y: position.y-20 }}
-    ></motion.div>
+      style={{
+        x: cursorX,
+        y: cursorY,
+      }}
+    />
   );
 };
 

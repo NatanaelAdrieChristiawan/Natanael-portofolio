@@ -5,24 +5,24 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 const items = [
   {
     id: 1,
+    title: "Adorable Media",
+    img: "works/Adorable.png",
+    desc: "A modern multi-domain digital platform and company profile for Adorable Media, an Indonesian creative agency & multimedia production house. Architected with a multi-domain infrastructure to seamlessly unify distinct creative verticals, paired with fluid GSAP animations, interactive micro-moments, and an intuitive CMS. Developed with Laravel, Filament CMS, Tailwind CSS, Alpine.js, and GSAP.",
+    link: "https://adorable.id"
+  },
+  {
+    id: 2,
     title: "Serval Pest",
     img: "works/serval.png",
     desc: "A responsive lead-generation website built with React.js for Serval Integrated Pest Management in Malaysia. Features dedicated navigation for residential and commercial/industrial services, highlighting Same Day Service, Pest Free Guarantee, and Eco-Friendly Treatments with clear CTAs optimized for high conversion.",
     link: "https://www.servalpestmanagement.com/"
   },
   {
-    id: 2,
+    id: 3,
     title: "Mari Renov",
     img: "works/MariRenov.png",
     desc: "A high-converting landing page for a premium interior home renovation and construction service. Designed with an elegant, responsive, and informative UI/UX to maximize customer consultation leads. Developed using React.js and Tailwind CSS.",
-    link: "https://www.marirenov.com"
-  },
-  {
-    id: 3,
-    title: "Everrise Plastic",
-    img: "works/everrise.png",
-    desc: "An e-commerce platform developed for Everrise Plastic, a leading plastic distributor in Indonesia. Engineered with a strong focus on seamless user experience and effortless transaction flows, powered by Laravel and MySQL.",
-    link: "https://evrplas.com/"
+    link: "https://marirenov.com"
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ const Single = ({ item }) => {
       <div className="container">
         <div className="wrapper">
           <div className="imageContainer" ref={ref}>
-            <img src={item.img} alt="" />
+            <img src={item.img} alt={item.title} />
           </div>
           <motion.div className="textContainer" style={{ y }}>
             <h2>{item.title}</h2>

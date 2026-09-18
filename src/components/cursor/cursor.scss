@@ -1,20 +1,22 @@
-@import "..//..//app.scss";
+@import "../../app.scss";
 
 .cursor {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.85);
     position: fixed;
-    z-index: 999;
+    top: 0;
+    left: 0;
+    pointer-events: none; // Prevent blocking clicks, hovers, and layout thrashing
+    z-index: 9999;
+    will-change: transform; // GPU compositor layer optimization
 
-    @include mobile{
+    @include mobile {
         display: none;
     }
 
-    @include tablet{
+    @include tablet {
         display: none;
     }
-
-    
 }
