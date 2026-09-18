@@ -1,5 +1,14 @@
+import { useState, useEffect } from "react";
 import "./hero.scss";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import ParticleText from "../particleText/ParticleText";
+import FloatingLines from "../floatingLines/FloatingLines";
+
+const FLOATING_LINES_GRADIENT = ["#3b2d7a", "#0c0c1d", "#7c6aef"];
+const FLOATING_LINES_WAVES = ["top", "middle", "bottom"];
+const FLOATING_LINES_COUNT_DESKTOP = [8, 10, 14];
+const FLOATING_LINES_COUNT_MOBILE = [5, 6, 8];
+const FLOATING_LINES_DIST = [6, 5, 4];
 
 const textVariants = {
   initial: {
@@ -38,6 +47,22 @@ const sliderVariants = {
 };
 
 const Hero = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile =
+        typeof window !== "undefined" &&
+        (window.matchMedia("(pointer: coarse)").matches ||
+         window.matchMedia("(hover: none)").matches ||
+         window.innerWidth <= 768);
+      setIsMobile(mobile);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -56,6 +81,7 @@ const Hero = () => {
   const rotateY = useTransform(mouseX, [-0.5, 0.5], [-14, 14]);
 
   const handleMouseMove = (e) => {
+    if (isMobile) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const xPct = (e.clientX - rect.left) / rect.width - 0.5;
     const yPct = (e.clientY - rect.top) / rect.height - 0.5;
@@ -64,10 +90,12 @@ const Hero = () => {
   };
 
   const handleMouseEnter = () => {
+    if (isMobile) return;
     scale.set(1.05);
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     x.set(0);
     y.set(0);
     scale.set(1);
@@ -75,6 +103,22 @@ const Hero = () => {
 
   return (
     <div className="hero">
+      <div className="heroBackground">
+        <FloatingLines
+          linesGradient={FLOATING_LINES_GRADIENT}
+          enabledWaves={FLOATING_LINES_WAVES}
+          lineCount={isMobile ? FLOATING_LINES_COUNT_MOBILE : FLOATING_LINES_COUNT_DESKTOP}
+          lineDistance={FLOATING_LINES_DIST}
+          animationSpeed={isMobile ? 0.6 : 0.8}
+          bendRadius={6}
+          bendStrength={-0.4}
+          interactive={!isMobile}
+          parallax={!isMobile}
+          parallaxStrength={0.15}
+          mixBlendMode="screen"
+          backgroundColor="#0c0c1d"
+        />
+      </div>
       <div className="wrapper">
         <motion.div
           className="textContainer"
@@ -85,9 +129,26 @@ const Hero = () => {
           <motion.h2 variants={textVariants}>
             NATANAEL ADRIE CHRISTIAWAN
           </motion.h2>
-          <motion.h1 variants={textVariants}>
-            Always Learning, Always Growing
-          </motion.h1>
+          <motion.div variants={textVariants} className="particleTextWrapper">
+            <ParticleText
+              text={"Always Learning,\nAlways Growing"}
+              particleSize={isMobile ? 2.2 : 2.4}
+              density={isMobile ? 5 : 4.5}
+              color="#f8f9ff"
+              highlightColor="#c4b5fd"
+              scatter={isMobile ? 100 : 160}
+              gatherDuration={1200}
+              stagger={isMobile ? 200 : 300}
+              pointerRepel={isMobile ? 0 : 36}
+              repelRadius={100}
+              idleDrift={0}
+              trigger="mount"
+              fontSize="clamp(2.2rem, 5.2vw, 76px)"
+              fontWeight={700}
+              fontFamily="'DM Sans', sans-serif"
+              textAlign="auto"
+            />
+          </motion.div>
           <motion.div variants={textVariants} className="buttons">
             <motion.button
               variants={textVariants}
@@ -114,21 +175,21 @@ const Hero = () => {
           variants={textVariants}
           initial="initial"
           animate="animate"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          style={{ perspective: 1000 }}
+          onMouseMove={isMobile ? undefined : handleMouseMove}
+          onMouseEnter={isMobile ? undefined : handleMouseEnter}
+          onMouseLeave={isMobile ? undefined : handleMouseLeave}
+          style={{ perspective: isMobile ? "none" : 1000 }}
         >
           <motion.img
             src="/LogoNatan.png"
             alt="Natanael Adrie Logo"
             style={{
-              rotateX,
-              rotateY,
-              scale,
-              transformStyle: "preserve-3d",
+              rotateX: isMobile ? 0 : rotateX,
+              rotateY: isMobile ? 0 : rotateY,
+              scale: isMobile ? 1 : scale,
+              transformStyle: isMobile ? "flat" : "preserve-3d",
               willChange: "transform",
-              cursor: "pointer",
+              cursor: isMobile ? "default" : "pointer",
             }}
           />
         </motion.div>

@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./cursor.scss";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const Cursor = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
+
   // Start off-screen to avoid top-left flicker before mouse movement
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
@@ -13,6 +15,17 @@ const Cursor = () => {
   const cursorY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    // Only enable cursor on fine pointer devices (desktop with mouse)
+    const isFinePointer =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: fine)").matches &&
+      !window.matchMedia("(pointer: coarse)").matches &&
+      window.innerWidth > 768;
+
+    setIsEnabled(isFinePointer);
+
+    if (!isFinePointer) return;
+
     const handleMouseMove = (e) => {
       // Offset by 25px so the 50px circle centers on the pointer tip
       mouseX.set(e.clientX - 25);
@@ -25,6 +38,9 @@ const Cursor = () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [mouseX, mouseY]);
+
+  // Completely unmount cursor on mobile / touch devices
+  if (!isEnabled) return null;
 
   return (
     <motion.div
