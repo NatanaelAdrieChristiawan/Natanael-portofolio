@@ -60,6 +60,7 @@ const ParticleText = ({
   fontSize      = 'clamp(2.2rem, 5.2vw, 76px)',
   fontWeight    = 700,
   fontFamily    = 'inherit',
+  letterSpacing = '0.035em',
   textAlign     = 'auto',
   className     = '',
   style         = {},
@@ -253,9 +254,41 @@ const ParticleText = ({
       const lines = String(text || ' ').split('\n');
       offCtx.font = font;
 
+      const calcTracking = sz => {
+        if (typeof letterSpacing === 'number') return letterSpacing;
+        if (typeof letterSpacing === 'string') {
+          if (letterSpacing.endsWith('em')) return parseFloat(letterSpacing) * sz;
+          if (letterSpacing.endsWith('px')) return parseFloat(letterSpacing);
+          return parseFloat(letterSpacing) || 0;
+        }
+        return 0;
+      };
+
+      let trackingPx = calcTracking(resolvedSize);
+
+      const measureLine = l => {
+        const chars = Array.from(l);
+        if (!chars.length) return 0;
+        let totalW = 0;
+        for (let idx = 0; idx < chars.length; idx++) {
+          totalW += offCtx.measureText(chars[idx]).width;
+          if (idx < chars.length - 1) {
+            let extra = 0;
+            const c = chars[idx];
+            const next = chars[idx + 1];
+            // Optical kerning breather for tight pairs where strokes collide (e.g. 'rn', 'ro', 'rm', 'ra')
+            if (c === 'r' && (next === 'n' || next === 'o' || next === 'm' || next === 'a')) {
+              extra = Math.max(1.5, resolvedSize * 0.035);
+            }
+            totalW += trackingPx + extra;
+          }
+        }
+        return totalW;
+      };
+
       let maxW = 0;
       for (const l of lines) {
-        const mw = offCtx.measureText(l).width;
+        const mw = measureLine(l);
         if (mw > maxW) maxW = mw;
       }
 
@@ -263,24 +296,24 @@ const ParticleText = ({
       if (maxW > maxTextW) {
         resolvedSize = Math.max(16, resolvedSize * (maxTextW / maxW));
         font         = `${fontWeight} ${resolvedSize}px ${resolvedFamily}`;
+        trackingPx   = calcTracking(resolvedSize);
         await waitForFonts(font);
         if (cid !== buildId) return;
         offCtx.font = font;
         maxW        = 0;
         for (const l of lines) {
-          const mw = offCtx.measureText(l).width;
+          const mw = measureLine(l);
           if (mw > maxW) maxW = mw;
         }
       }
 
       const lineMetrics = lines.map(l => {
-        const m = offCtx.measureText(l);
+        const width = Math.max(1, Math.ceil(measureLine(l)));
         return {
           text   : l,
-          width  : Math.max(1, Math.ceil(m.actualBoundingBoxRight  || m.width)),
-          left   : Math.ceil(m.actualBoundingBoxLeft || 0),
-          ascent : Math.ceil(m.actualBoundingBoxAscent  || resolvedSize * 0.78),
-          descent: Math.ceil(m.actualBoundingBoxDescent || resolvedSize * 0.22),
+          width,
+          ascent : Math.ceil(resolvedSize * 0.78),
+          descent: Math.ceil(resolvedSize * 0.22),
         };
       });
 
@@ -307,8 +340,24 @@ const ParticleText = ({
         let xPos = pad;
         if (effAlign === 'center') xPos = pad + (maxMW - m.width) / 2;
         else if (effAlign === 'right') xPos = pad + (maxMW - m.width);
+
+        const yPos = pad + maxAsc + i * lh;
         offCtx.textAlign = 'left';
-        offCtx.fillText(m.text, xPos, pad + maxAsc + i * lh);
+
+        const chars = Array.from(m.text);
+        let curX = xPos;
+        for (let cIdx = 0; cIdx < chars.length; cIdx++) {
+          const char = chars[cIdx];
+          offCtx.fillText(char, curX, yPos);
+          let extra = 0;
+          if (cIdx < chars.length - 1) {
+            const next = chars[cIdx + 1];
+            if (char === 'r' && (next === 'n' || next === 'o' || next === 'm' || next === 'a')) {
+              extra = Math.max(1.5, resolvedSize * 0.035);
+            }
+          }
+          curX += offCtx.measureText(char).width + trackingPx + extra;
+        }
       }
 
       const imgData = offCtx.getImageData(0, 0, off.width, off.height);
@@ -423,7 +472,7 @@ const ParticleText = ({
   }, [
     text, particleSize, density, color, highlightColor,
     scatter, gatherDuration, stagger, pointerRepel, repelRadius,
-    idleDrift, trigger, fontSize, fontWeight, fontFamily, textAlign,
+    idleDrift, trigger, fontSize, fontWeight, fontFamily, letterSpacing, textAlign,
   ]);
 
   const sr = String(text || '').replace(/\n/g, ' ');

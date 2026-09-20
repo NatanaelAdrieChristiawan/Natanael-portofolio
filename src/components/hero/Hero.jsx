@@ -132,7 +132,7 @@ const Hero = () => {
           <motion.div variants={textVariants} className="particleTextWrapper">
             <ParticleText
               text={"Always Learning,\nAlways Growing"}
-              particleSize={isMobile ? 1.8 : 2.4}
+              particleSize={isMobile ? 1.6 : 2.2}
               density={isMobile ? 2 : 4.5}
               color="#f8f9ff"
               highlightColor="#c4b5fd"
@@ -143,9 +143,10 @@ const Hero = () => {
               repelRadius={100}
               idleDrift={0}
               trigger="mount"
-              fontSize={isMobile ? "clamp(1.75rem, 6.8vw, 34px)" : "clamp(2.2rem, 5.2vw, 76px)"}
-              fontWeight={800}
+              fontSize={isMobile ? "clamp(1.7rem, 6.8vw, 32px)" : "clamp(2.2rem, 5.2vw, 76px)"}
+              fontWeight={700}
               fontFamily="'DM Sans', sans-serif"
+              letterSpacing={isMobile ? "0.04em" : "0.035em"}
               textAlign="auto"
             />
           </motion.div>
