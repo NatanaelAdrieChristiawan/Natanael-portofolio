@@ -1,30 +1,35 @@
-@import "..//..//app.scss";
+@import "../../app.scss";
 
-.portfolio{
+.portfolio {
     position: relative;
 
-    .progress{
+    .progress {
         position: sticky;
         top: 0;
         left: 0;
         padding-top: 50px;
         text-align: center;
-        color: orange;
+        color: #a78bfa;
         font-size: 36px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        z-index: 10;
 
-        @include mobile{
+        @include mobile {
             display: none;
         }
 
-        @include tablet{
+        @include tablet {
             padding-top: calc(100vh - 100px);
             font-size: 24px;
         }
 
-        .progressBar{
-            height: 10px;
-            background-color: white;
-            
+        .progressBar {
+            height: 4px;
+            background: linear-gradient(90deg, #8b5cf6, #c4b5fd);
+            border-radius: 9999px;
+            box-shadow: 0 0 16px rgba(139, 92, 246, 0.4);
+            margin-top: 15px;
         }
     }
 
@@ -36,7 +41,7 @@
         height: 100%;
         overflow: hidden;
 
-        .wrapper{
+        .wrapper {
             max-width: 1250px;
             height: 100%;
             margin: auto;
@@ -45,84 +50,126 @@
             justify-content: center;
             gap: 50px;
 
-            @include mobile{
+            @include mobile {
                 flex-direction: column;
+                padding: 0 20px;
+                gap: 20px;
             }
 
-            @include tablet{
+            @include tablet {
                 flex-direction: column;
+                padding: 0 20px;
+                gap: 30px;
             }
-            
-            .imageContainer{
+
+            .imageContainer {
                 flex: 1;
                 height: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-                @include mobile{
+                @include mobile {
                     width: 100%;
-                    max-height: 300px;
+                    max-height: 240px;
                 }
 
-                @include tablet{
+                @include tablet {
                     width: 100%;
                 }
-                
+
                 img {
                     width: 100%;
-                    height: 100%;
+                    max-height: 380px;
                     object-fit: cover;
-                    margin-top: 10px;
                     border-radius: 20px;
-                }
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 
-                @include mobile{
-                    object-fit: contain;
+                    @include mobile {
+                        max-height: 220px;
+                        object-fit: cover;
+                    }
                 }
             }
-            
-            .textContainer{
+
+            .textContainer {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 24px;
 
-                @include mobile{
+                @include mobile {
+                    transform: none !important;
+                    padding: 0;
+                    align-items: center;
+                    text-align: center;
+                    gap: 14px;
+                }
+
+                @include tablet {
                     transform: none !important;
                     padding: 10px;
                     align-items: center;
                     text-align: center;
                 }
 
-                @include tablet{
-                    transform: none !important;
-                    padding: 10px;
-                    align-items: center;
-                    text-align: center;
-                }
+                h2 {
+                    font-size: 48px;
+                    font-weight: 700;
+                    color: #f8fafc;
+                    letter-spacing: -0.02em;
+                    line-height: 1.15;
 
-                h2{
-                    font-size: 57px;
+                    @include mobile {
+                        font-size: 26px;
+                    }
 
-                    @include mobile{
+                    @include tablet {
                         font-size: 36px;
                     }
                 }
 
-                p{
-                    color: gray;
-                    font-size: 20px;
+                p {
+                    color: #94a3b8;
+                    font-size: 16px;
+                    line-height: 1.6;
 
-                    @include mobile{
-                        font-size: 16px;
+                    @include mobile {
+                        font-size: 14px;
+                        line-height: 1.5;
                     }
                 }
 
-                button{
-                    background-color: orange;
-                    border: none;
-                    border-radius: 10px;
-                    padding: 10px;
-                    width: 200px;
+                button {
+                    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+                    color: #ffffff;
+                    font-weight: 600;
+                    font-size: 15px;
+                    letter-spacing: 0.02em;
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    border-radius: 12px;
+                    padding: 12px 28px;
+                    width: fit-content;
+                    min-width: 160px;
                     cursor: pointer;
+                    box-shadow: 0 4px 18px rgba(139, 92, 246, 0.3);
+                    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 24px rgba(139, 92, 246, 0.45);
+                        background: linear-gradient(135deg, #9333ea, #6d28d9);
+                    }
+
+                    &:active {
+                        transform: translateY(0);
+                    }
+
+                    @include mobile {
+                        width: 100%;
+                        padding: 12px 20px;
+                    }
                 }
             }
         }

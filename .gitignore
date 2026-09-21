@@ -23,6 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# AI Skills
+# AI Skills & Local Harnesses
 .agents/
+.gemini/
+.cursor/
 

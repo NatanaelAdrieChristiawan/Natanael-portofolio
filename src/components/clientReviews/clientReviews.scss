@@ -4,12 +4,13 @@
 $bg-dark: #0A0A0A;
 $card-bg: rgba(255, 255, 255, 0.03);
 $card-border: rgba(255, 255, 255, 0.05);
-$primary-accent: #FBBF24; // Gold/Amber
+$primary-accent: #8b5cf6; // Electric Violet token
 $text-primary: #F8FAFC;
 $text-secondary: #94A3B8;
 $blur-strength: 16px;
-$purple-accent: #A855F7;
-$gold-accent: #FBBF24;
+$purple-accent: #8b5cf6;
+$accent-light: #a78bfa;
+$gold-accent: #FBBF24; // semantic star rating
 
 .clientReviews {
     background: linear-gradient(180deg, #1a1a3e, #0c0c1d);

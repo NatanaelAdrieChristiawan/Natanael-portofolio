@@ -231,13 +231,10 @@
                 }
 
                 h3 {
-                    color: white;
+                    color: #f8fafc;
                     font-size: 22px;
                     font-weight: 600;
-                    background: linear-gradient(135deg, #fff 0%, #ffa500 100%);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
+                    letter-spacing: -0.01em;
 
                     @include mobile {
                         font-size: 16px;
